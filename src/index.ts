@@ -1,4 +1,4 @@
-import AbstractSyntaxTree, { generate, append } from 'abstract-syntax-tree';
+import AbstractSyntaxTree from 'abstract-syntax-tree';
 import { parse } from '@typescript-eslint/parser';
 import { format } from 'format-javascript';
 
@@ -65,10 +65,10 @@ function compile(tsCodeString: string) {
   
     const generatedNode = recursivelyDeleteTSElementsFromAST(element);
   
-    append(jsAST, generatedNode);
+    AbstractSyntaxTree.append(jsAST, generatedNode);
   }
   
-  const unformattedJsCode = generate(jsAST);
+  const unformattedJsCode = AbstractSyntaxTree.generate(jsAST);
   
   const formattedJsCode = format(unformattedJsCode, { indent_size: 2, space_in_empty_paren: true });
 
