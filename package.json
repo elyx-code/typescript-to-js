@@ -1,21 +1,21 @@
 {
   "name": "typescript-to-js",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Typescript to javascript compiler that only drops the keywords. No other changes to the code.",
-  "main": "index.js",
+  "main": "./dist/index.js",
+  "typings": "./dist/index.d.ts",
   "license": "MIT",
   "scripts": {
-    "build": "rimraf ./build && tsc",
+    "build": "tsc",
     "start:dev": "nodemon",
-    "start": "npm run build && node build/index.js",
+    "start": "npm run build && node dist/index.js",
     "lint": "eslint . --ext .ts",
-    "prettier-format": "run-script-os",
     "test": "jest",
     "test:dev": "jest --watchAll"
   },
   "husky": {
     "hooks": {
-      "pre-commit": "npm run test && npm run prettier-format && npm run lint"
+      "pre-commit": "npm run test"
     }
   },
   "keywords": [],
@@ -32,7 +32,6 @@
     "nodemon": "^1.19.1",
     "onchange": "^6.1.0",
     "prettier": "^1.19.1",
-    "rimraf": "^3.0.0",
     "run-script-os": "^1.1.1",
     "ts-node": "^8.3.0",
     "typescript": "^4.0.3"
