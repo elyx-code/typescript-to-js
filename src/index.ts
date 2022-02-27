@@ -19,7 +19,7 @@ function recursivelyDeleteTSElementsFromAST(tsASTSection: ReturnType<typeof pars
     tsASTSectionClone = tsASTSectionClone.expression;
   }
 
-  // Loop over the keys of this section of the AST
+  // Loop over the properties of this section of the AST
   for (const key in tsASTSectionClone) {
     if (Object.prototype.hasOwnProperty.call(tsASTSectionClone, key)) {
       let value = tsASTSectionClone[key];
