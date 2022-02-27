@@ -21,7 +21,14 @@
       "pre-commit": "npm run test"
     }
   },
-  "keywords": [],
+  "keywords": [
+    "compiler",
+    "typescript",
+    "javascript",
+    "abstract syntax tree",
+    "ast",
+    "transpiler"
+  ],
   "author": "sergioh213",
   "devDependencies": {
     "@types/jest": "^26.0.14",
