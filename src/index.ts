@@ -1,3 +1,4 @@
+// @ts-ignore abstract-syntax-tree module doesn't have type declaration.
 import AbstractSyntaxTree from 'abstract-syntax-tree';
 import { parse } from '@typescript-eslint/parser';
 import { format } from 'format-javascript';
