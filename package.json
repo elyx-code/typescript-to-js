@@ -1,7 +1,7 @@
 {
   "name": "typescript-to-js",
   "version": "1.0.9",
-  "description": "Typescript to javascript compiler that only drops the keywords. No other changes to the code.",
+  "description": "Typescript to javascript compiler that only drops the typescript specific keywords. No other changes are made to the code.",
   "main": "./dist/index.js",
   "typings": "./dist/index.d.ts",
   "license": "MIT",
