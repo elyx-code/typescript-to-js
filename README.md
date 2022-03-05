@@ -1,8 +1,8 @@
 # Typescript to Javascript compiler
 
-This Typescript to javascript compiler only drops the keywords. No other changes to the code.
+This Typescript to Javascript compiler only drops the Typescript specific keywords. No other changes are made to the code.
 
-Usually, when you compile typescript code with the official typescript compiler, the outputted javascript code looks something like this:
+Usually, when you compile typescript code with the official Typescript compiler, the outputted Javascript code looks something like this:
 ```js
 "use strict";
 var __assign = (this && this.__assign) || function () {
@@ -93,8 +93,8 @@ function main(file) {
   fs.writeFileSync(outputFileName, compiledJsCode);
   console.log("Javascript output code:\n", compiledJsCode);
 }
-const relativeBoilerplateCodeLocation = __dirname + "/src/index.ts";
-main(relativeBoilerplateCodeLocation);
+const pathToFile = __dirname + "/src/index.ts";
+main(pathToFile);
 export { main };
 ```
 
