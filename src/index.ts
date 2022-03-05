@@ -1,7 +1,7 @@
 // @ts-ignore abstract-syntax-tree module doesn't have type declaration.
 import AbstractSyntaxTree from 'abstract-syntax-tree';
 import { parse } from '@typescript-eslint/parser';
-import { format } from 'format-javascript';
+import { format, FormattingOptions } from 'format-javascript';
 
 function isObject(obj: any) {
   return typeof obj === 'object' && obj !== null
@@ -73,7 +73,7 @@ function recursivelyDeleteTSElementsFromAST(tsASTSection: ReturnType<typeof pars
   return tsASTSectionClone;
 }
 
-function compile(tsCodeString: string) {
+function compile(tsCodeString: string, formattingOptions?: FormattingOptions) {
   // Pass the TS code to the 3rd party parser to turn it into a compliant TS abstract syntax tree (AST)
   const typescriptAST = parse(tsCodeString, {
     sourceType: 'module',
@@ -96,7 +96,14 @@ function compile(tsCodeString: string) {
   const unformattedJsCode = AbstractSyntaxTree.generate(jsAST);
 
   // Format the output code with a 3rd party code formatter
-  const formattedJsCode = format(unformattedJsCode, { indent_size: 2, space_in_empty_paren: true });
+  const formattedJsCode = format(
+    unformattedJsCode,
+    {
+      indent_size: 2,
+      space_in_empty_paren: true,
+      ...formattingOptions
+    }
+  );
 
   return formattedJsCode;
 }
