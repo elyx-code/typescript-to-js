@@ -1,6 +1,6 @@
 {
   "name": "typescript-to-js",
-  "version": "1.0.9",
+  "version": "1.0.10",
   "description": "Typescript to javascript compiler that only drops the typescript specific keywords. No other changes are made to the code.",
   "main": "./dist/index.js",
   "typings": "./dist/index.d.ts",
@@ -33,23 +33,16 @@
   "devDependencies": {
     "@types/jest": "^26.0.14",
     "@types/js-beautify": "^1.13.3",
-    "@types/node": "^12.7.2",
-    "@typescript-eslint/eslint-plugin": "^2.21.0",
-    "@typescript-eslint/parser": "^2.21.0",
-    "eslint": "^6.8.0",
-    "eslint-config-prettier": "^6.10.0",
-    "eslint-plugin-prettier": "^3.1.2",
+    "@types/node": "^20.5.1",
     "husky": "^4.2.3",
     "nodemon": "^1.19.1",
-    "onchange": "^6.1.0",
-    "prettier": "^1.19.1",
-    "run-script-os": "^1.1.1",
     "ts-node": "^8.3.0",
     "typescript": "^4.0.3"
   },
   "dependencies": {
-    "abstract-syntax-tree": "^2.20.5",
-    "eslint-plugin-jest": "^24.1.0",
+    "@babel/core": "^7.22.10",
+    "@babel/plugin-transform-typescript": "^7.22.10",
+    "abstract-syntax-tree": "*",
     "format-javascript": "^0.1.3",
     "jest": "^26.5.3",
     "ts-jest": "^26.4.1"
