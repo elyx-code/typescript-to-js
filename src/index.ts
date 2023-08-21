@@ -1,6 +1,6 @@
 // import AbstractSyntaxTree from 'abstract-syntax-tree';
 import { format, FormattingOptions } from 'format-javascript';
-// Must be a require
+// DON"T CHANGE: Must be a "require" and not an "import"
 const compiler = require('@babel/core');
 
 function isObject(obj: any) {
@@ -78,14 +78,12 @@ function compile(tsCodeString: string, formattingOptions?: FormattingOptions) {
     plugins: ['@babel/plugin-transform-typescript'],
   });
 
-  console.log('compiled: ', compiled)
   const formattedJsCode = format(compiled?.code as string, {
     indent_size: 2,
     space_in_empty_paren: true,
     ...formattingOptions,
   });
 
-  console.log('formattedJsCode: ', formattedJsCode)
   return formattedJsCode;
   // // Pass the TS code to the 3rd party parser to turn it into a compliant TS abstract syntax tree (AST)
   // // @ts-ignore

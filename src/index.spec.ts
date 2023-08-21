@@ -13,22 +13,17 @@ describe('test', () => {
   } else {
     testFolder = path.join(__dirname, '..', 'tests', 'compilation-test-files');
   }
-  console.log('testFolder: ', testFolder);
   const files = readdirSync(testFolder);
 
   for (let index = 0; index < files.length; index++) {
     const file = files[index];
-    console.log('file: ', file);
     const fileContents = readFileSync(path.join(testFolder, file), 'utf8');
 
-    test('add', async () => {
-      let result;
+    test(`Test compilation of demo file: ${file}`, async () => {
       try {
-        result = compile(fileContents);
-        console.log('Successful compilation result: ', result);
+        const result = compile(fileContents);
         expect(true).toEqual(true);
       } catch (error) {
-        console.log('Compilation error: ', error);
         expect(true).toEqual(false);
       }
     });
