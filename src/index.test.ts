@@ -1,8 +1,9 @@
+import { describe, expect, test } from 'vitest'
 import { readFileSync, readdirSync } from 'fs';
 import path from 'path';
 import { compile } from './index';
 
-describe('test', () => {
+describe('Test file compilations', () => {
   // Read the files in the test folder and loop over them
   // We then dynamically read the contents of each file and run it as a test
 

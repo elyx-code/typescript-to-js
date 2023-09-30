@@ -1,7 +1,12 @@
-import { format, FormattingOptions } from 'format-javascript';
+import { format, formatSync } from './format';
 // DON'T CHANGE: Must be a "require" and not an "import"
 const compiler = require('@babel/core');
 const toTypescript = require('@babel/plugin-transform-typescript');
+
+export {
+  formatSync,
+  format,
+}
 
 function isObject(obj: any) {
   return typeof obj === 'object' && obj !== null
@@ -73,21 +78,24 @@ function recursivelyDeleteTSElementsFromAST(tsASTSection: ReturnType<any>) {
   return tsASTSectionClone;
 }
 
-function compile(tsCodeString: string, formattingOptions?: FormattingOptions) {
+export async function compile(tsCodeString: string) {
+  const compiled = compiler.transform(tsCodeString, {
+    plugins: [toTypescript],
+    babelrc: false,
+  });
+
+  const formattedJsCode = await format(compiled?.code);
+
+  return formattedJsCode;
+}
+
+export function compileSync(tsCodeString: string) {
   const compiled = compiler.transformSync(tsCodeString, {
     plugins: [toTypescript],
     babelrc: false,
   });
 
-  const formattedJsCode = format(compiled?.code as string, {
-    indent_size: 2,
-    space_in_empty_paren: true,
-    ...formattingOptions,
-  });
+  const formattedJsCode = formatSync(compiled?.code);
 
   return formattedJsCode;
-}
-
-export {
-  compile
 }
