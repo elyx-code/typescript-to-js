@@ -1,11 +1,12 @@
-import { format, formatSync } from './format';
+// import { format, formatSync } from './format';
+// import { format } from './format';
 // DON'T CHANGE: Must be a "require" and not an "import"
 const compiler = require('@babel/core');
 const toTypescript = require('@babel/plugin-transform-typescript');
 
 export {
-  formatSync,
-  format,
+  // formatSync,
+  // format,
 }
 
 function isObject(obj: any) {
@@ -84,18 +85,18 @@ export async function compile(tsCodeString: string) {
     babelrc: false,
   });
 
-  const formattedJsCode = await format(compiled?.code);
+  // const formattedJsCode = await format(compiled?.code);
 
-  return formattedJsCode;
+  return compiled.code;
 }
 
-export function compileSync(tsCodeString: string) {
-  const compiled = compiler.transformSync(tsCodeString, {
-    plugins: [toTypescript],
-    babelrc: false,
-  });
+// export function compileSync(tsCodeString: string) {
+//   const compiled = compiler.transformSync(tsCodeString, {
+//     plugins: [toTypescript],
+//     babelrc: false,
+//   });
 
-  const formattedJsCode = formatSync(compiled?.code);
+//   const formattedJsCode = formatSync(compiled?.code);
 
-  return formattedJsCode;
-}
+//   return formattedJsCode;
+// }
